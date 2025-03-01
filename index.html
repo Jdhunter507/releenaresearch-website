@@ -12,6 +12,9 @@
             --text-primary: #ffffff;
             --text-secondary: #8892b0;
             --card-bg: rgba(16, 33, 65, 0.6);
+            --input-bg: rgba(16, 33, 65, 0.8);
+            --input-border: rgba(100, 255, 218, 0.3);
+            --input-focus: rgba(100, 255, 218, 0.8);
         }
         
         * {
@@ -256,6 +259,67 @@
             font-size: 1.2rem;
         }
         
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            text-align: left;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            flex: 1;
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--secondary-color);
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 5px;
+            border: 1px solid var(--input-border);
+            background: var(--input-bg);
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--input-focus);
+            box-shadow: 0 0 0 2px rgba(100, 255, 218, 0.2);
+        }
+        
+        .form-group select {
+            appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="6"><path d="M0 0l6 6 6-6z" fill="%2364ffda"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 30px;
+        }
+        
+        .form-group select option {
+            background: var(--primary-color);
+            color: var(--text-primary);
+        }
+        
         .btn {
             display: inline-block;
             padding: 12px 30px;
@@ -291,6 +355,47 @@
         
         .btn:hover::before {
             left: 0;
+        }
+        
+        .form-submit {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        .form-message {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            display: none;
+        }
+        
+        .form-message.success {
+            background: rgba(100, 255, 218, 0.2);
+            color: var(--secondary-color);
+            border: 1px solid var(--secondary-color);
+        }
+        
+        .form-message.error {
+            background: rgba(255, 111, 97, 0.2);
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+        }
+        
+        .direct-contact {
+            margin-top: 50px;
+            color: var(--text-secondary);
+        }
+        
+        .direct-contact a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        .direct-contact a:hover {
+            opacity: 0.8;
         }
         
         footer {
@@ -346,6 +451,11 @@
             
             h2 {
                 font-size: 2rem;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
             }
         }
     </style>
@@ -406,11 +516,98 @@
     <section id="contact" class="contact">
         <h2>Contact Us</h2>
         <p>Let's collaborate and innovate together. Our team is ready to discuss how we can help bring your ideas to life through cutting-edge research and engineering.</p>
-        <a href="mailto:info@releenaresearch.com" class="btn">Email Us</a>
+        
+        <div class="contact-form">
+            <!-- Replace this form action with your actual Google Form URL -->
+            <form id="contactForm" action="https://docs.google.com/forms/d/e/1FAIpQLScjtlO5HLUBHcYyQQRG4Di--V7l4jPNWdoZew14e9aI6AOb1g/viewform" method="post" target="_blank" onsubmit="return handleFormSubmit()">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <!-- Replace entry.123456789 with your actual Google Form field ID -->
+                        <input type="text" id="firstName" name="1FAIpQLScjtlO5HLUBHcYyQQRG4Di--V7l4jPNWdoZew14e9aI6AOb1g" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <!-- Replace entry.234567890 with your actual Google Form field ID -->
+                        <input type="text" id="lastName" name="1FAIpQLScjtlO5HLUBHcYyQQRG4Di--V7l4jPNWdoZew14e9aI6AOb1g" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <!-- Replace entry.345678901 with your actual Google Form field ID -->
+                    <input type="email" id="email" name="1FAIpQLScjtlO5HLUBHcYyQQRG4Di--V7l4jPNWdoZew14e9aI6AOb1g" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="businessName">Business Name</label>
+                    <!-- Replace entry.456789012 with your actual Google Form field ID -->
+                    <input type="text" id="businessName" name="1FAIpQLScjtlO5HLUBHcYyQQRG4Di--V7l4jPNWdoZew14e9aI6AOb1g" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="industry">Industry</label>
+                    <!-- Replace entry.567890123 with your actual Google Form field ID -->
+                    <select id="industry" name="1FAIpQLScjtlO5HLUBHcYyQQRG4Di--V7l4jPNWdoZew14e9aI6AOb1g" required>
+                        <option value="" disabled selected>Select your industry</option>
+                        <option value="Technology">Technology</option>
+                        <option value="Healthcare">Healthcare</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Manufacturing">Manufacturing</option>
+                        <option value="Retail">Retail</option>
+                        <option value="Education">Education</option>
+                        <option value="Energy">Energy</option>
+                        <option value="Logistics & Transportation">Logistics & Transportation</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-submit">
+                    <button type="submit" class="btn">Submit</button>
+                </div>
+                
+                <div id="formSuccess" class="form-message success">
+                    Thank you for your submission. We'll be in touch shortly!
+                </div>
+                
+                <div id="formError" class="form-message error">
+                    There was an error submitting your form. Please try again.
+                </div>
+            </form>
+        </div>
+        
+        <div class="direct-contact">
+            <p>Alternatively, you can reach us directly at <a href="mailto:info@releenaresearch.com">info@releenaresearch.com</a></p>
+        </div>
     </section>
     
     <footer>
         <p>&copy; 2025 Releena Research LTD. All rights reserved.</p>
     </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contactForm');
+            const formSuccess = document.getElementById('formSuccess');
+            const formError = document.getElementById('formError');
+            
+            // Set up for form submission handling
+            window.handleFormSubmit = function() {
+                // Show success message
+                setTimeout(function() {
+                    formSuccess.style.display = 'block';
+                    
+                    // Hide success message after 5 seconds
+                    setTimeout(function() {
+                        formSuccess.style.display = 'none';
+                    }, 5000);
+                }, 1000);
+                
+                // Return true to allow the form to submit to Google Forms
+                return true;
+            };
+        });
+    </script>
 </body>
 </html>
